@@ -18,7 +18,7 @@
     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"url can't be empty"] callbackId:command.callbackId];
     return;
   }
-  if (![[urlString lowercaseString] hasPrefix:@"http"]) {
+  if (![[urlString lowercaseString] hasPrefix:@"http"] || ![[urlString lowercaseString] hasPrefix:@"data"] || ![[urlString lowercaseString] hasPrefix:@"file"]) {
     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"url must start with http or https"] callbackId:command.callbackId];
     return;
   }
